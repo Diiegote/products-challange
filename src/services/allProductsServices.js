@@ -8,6 +8,7 @@ const allProductsServices = async (page, limit = 5, nombre) => {
       .limit(limit);
    const totalProductos = await Product.countDocuments({ nombre: { $regex: new RegExp(nombre, "i") } });
    const totalPages = Math.ceil(totalProductos / limit);
+   console.log(totalPages);
    if (!products.length) throw new ClientError('No se encontraron productos', 404);
    return { products, totalProductos, totalPages };
 };
