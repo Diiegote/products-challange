@@ -8,11 +8,13 @@ const asyncCatched = require("../utils/asyncCatched");
 const validateCreateProduct = require("../middlewares/validationProducts/validationCreateProduct");
 const validationResultExpress = require("../middlewares/validationResultExpress");
 const validateEditProduct = require("../middlewares/validationProducts/validationEditProduct");
+const allCategoriesControllers = require("../controllers/allCategoriesControllers");
 
 const router = Router();
 
 router.get('/products', asyncCatched(allProductsControllers));
 router.get('/product/:id', isValidObjectId("id"), asyncCatched(getProductByIdControllers));
+router.get('/categories', asyncCatched(allCategoriesControllers));
 router.post('/new-product', validateCreateProduct, validationResultExpress, asyncCatched(createProductControllers));
 router.patch('/edit-product/:id', isValidObjectId("id"), validateEditProduct, validationResultExpress, asyncCatched(editProductControllers));
 
