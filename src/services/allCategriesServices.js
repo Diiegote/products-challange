@@ -2,7 +2,7 @@ const { Product } = require("../schemas");
 const ClientError = require("../utils/errors");
 
 
-const allCategoriesServices = async (page, limit = 8, categoria) => {
+const allCategoriesServices = async (page, limit = 10, categoria) => {
    const products = await Product.find({ categoria: { $regex: new RegExp(categoria, "i") } })
       .skip((page - 1) * limit)
       .limit(limit);
