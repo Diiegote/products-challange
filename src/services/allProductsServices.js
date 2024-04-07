@@ -4,7 +4,7 @@ const ClientError = require("../utils/errors");
 
 const allProductsServices = async (page, limit = 8, nombre, categoria) => {
    if (categoria) {
-      const products = await Product.find({ categoria: { $regex: new RegExp(categoria, "i") } })
+      const products = await Product.find({ categoria: { $regex: new RegExp(categoria, "i") } }, { nombre: { $regex: new RegExp(nombre, "i") } })
          .skip((page - 1) * limit)
          .limit(limit);
       console.log(categoria);
