@@ -1,3 +1,4 @@
+const getProductByIdControllers = require("../controllers/getProductByIdControllers");
 const { Product } = require("../schemas");
 const ClientError = require("../utils/errors");
 
